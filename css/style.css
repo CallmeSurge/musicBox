@@ -135,10 +135,6 @@ THE SEARCH RESULT
 	opacity: 1;
 }
 
-.post.selected,
-.playIcon.selected {
-	opacity: none;
-}
 
 #content {
 	padding-top: 5px;
@@ -157,23 +153,10 @@ THE SEARCH RESULT
 }
 
 /*size of the playButton*/
-.playIcon {
+.playIcon,
+.downloadIcon {
 	opacity: 0.5;	
 	width: 50px;
 	height: 50px;
 }
 
-/*the song name*/
-.songName {
-	font-variant: small-caps;
-	font-size: 18px;
-    text-overflow: ellipsis; /* will make [...] at the end */
-    width: 250px; /* change to your preferences */
-    white-space: pre-line; /* paragraph to one line */
-    overflow:hidden; /* older browsers */
-}
-
-/*the position of the album-art on the div*/
-#songImg {
-
-}

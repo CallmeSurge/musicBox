@@ -15,10 +15,8 @@ var musicApp = {
 	currentSong:null,
 
 	initialize: function(){
-		musicApp
 		musicApp.searchButton = $('#searchButton');
 		musicApp.searchField = $('#searchField');
-		musicApp.top20 = $('#top20');
 		musicApp.searchResult = $("#searchResult");
 		musicApp.textField = $('#textField');
 		musicApp.initEvents();
@@ -63,7 +61,6 @@ var musicApp = {
 	loadsong: function(response) {
 		var post_div = "";	//clearing the searchResult in order to bring in another searchResults
 		var listenMsg;	
-		var download;
 		musicApp.list = [];
 		// the features that would come with the result of the searchResults
 		$.each(response, function(index, result){
@@ -73,30 +70,28 @@ var musicApp = {
 		
 			if (image == undefined){
 				image = "img/default.jpg";
-				}
+			}
 
 		// the song name or name of the searchResult.
-		var songName = result.permalink;
+		var songName = result.title;
 		var replace = songName.replace(/-/gi, " ");
+
+		// the link to the songs
+		var listenToSong = result.stream_url + '?client_id=' + musicApp.params.client_id;
+		listenMsg = "img/button.png";
 
 		// validating the available links 
 		     if (result.stream_url == undefined) {
 				result.post_div = "";
 			}
 
-		// the link to the songs
-		var listenToSong = result.stream_url + '?client_id=' + musicApp.params.client_id;
-		listenMsg = "img/button.png";
-		download = "img/down.png";
 		
 			post_div += '<div class="post">' +
 								'<ul id="content">' +
 									'<li><img id="songImg" src="' + image + '"/></li>' +
 									'<br><li class="songName">' + replace +'</li>' + '<br>' +
 									'<li><a class="songs" href= "'+ listenToSong +
-									'"><img class="playIcon" src="' + listenMsg + '"/></a><input type="hidden" value=' + index + '></li>' +
-									'<li><a class="songs" href= "'+ listenToSong +
-									'"><img class="playIcon" src="' + download + '"/></a></li>' + 
+									'"><img class="playIcon" src="' + listenMsg + '"/></a><input type="hidden" value=' + index + '></li>' + 
 								'</ul>' +
 						'</div>';
 
@@ -119,6 +114,7 @@ var musicApp = {
 	validity: function(e){
 
 		// validating the input of the user and preventing the browser default actions
+
 		var myMusic = musicApp.searchField.val();
 		musicApp.textField.text('');
 		if(myMusic) {
