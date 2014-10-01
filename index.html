@@ -15,14 +15,16 @@
 			</div>
 			<div id="wrapper">
 			<div id="searchBar">
-				<ul>
-					<li>
-						<input type="text" id="searchField" placeholder="Search for Artists or Songs" />
-					</li>
-					<li>
-						<input type="button" id="searchButton" value=""/>
-					</li>
-				</ul>
+				<form id="searchForm">
+					<ul>
+						<li>
+							<input type="text" id="searchField" placeholder="Search for Artists or Songs" />
+						</li>
+						<li>
+							<input type="submit" id="searchButton" value=""/>
+						</li>
+					</ul>
+				</form>
 			</div>
 			<p>
 				<audio src="#" controls width="200" id="player" onended="musicApp.playNext()"></audio>

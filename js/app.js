@@ -30,6 +30,7 @@ var musicApp = {
 	},
 	initEvents:function() {
 		musicApp.searchButton.click(musicApp.validity);
+		$("#searchForm").submit(musicApp.validity);
 		musicApp.configureAudioPlayer();
 		musicApp.searchResult.on("click","a.songs",musicApp.playSong);
 	
@@ -114,7 +115,7 @@ var musicApp = {
 	validity: function(e){
 
 		// validating the input of the user and preventing the browser default actions
-
+		e.preventDefault();
 		var myMusic = musicApp.searchField.val();
 		musicApp.textField.text('');
 		if(myMusic) {
